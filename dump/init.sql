@@ -3,6 +3,7 @@ USE fluentd-test;
 CREATE TABLE IF NOT EXISTS `logs` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` INT NOT NULL,
+  `app_name` VARCHAR(100) NOT NULL,
   `trace_id` VARCHAR(512) NOT NULL,
   `result_msg` VARCHAR(512) NOT NULL,
   `created_at` TIMESTAMP NOT NULL
