@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS `fluentd-test`;
+USE fluentd-test;
+CREATE TABLE IF NOT EXISTS `logs` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` INT NOT NULL,
+  `trace_id` VARCHAR(512) NOT NULL,
+  `result_msg` VARCHAR(512) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    container_name: mysql-service
+    image: mysql:5.7
+    platform: linux/x86_64
+    restart: always
+    command: --lower_case_table_names=1
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=fluentd-test
+      - MYSQL_ROOT_PASSWORD=1234
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./dump/:/docker-entrypoint-initdb.d/
+  fluentd:
+    container_name: fluentd-service
+    build: .
+    volumes:
+      - ./conf:/fluentd/etc
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    depends_on:
+      - db
