@@ -17,7 +17,7 @@ services:
       - --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./dump/:/docker-entrypoint-initdb.d/
-      - db_data:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
   fluentd:
     container_name: fluentd-service
     build: .
